@@ -9,20 +9,27 @@ public class PlayerInput : MonoBehaviour
      * the components needed to access are the Camera and the Character Controller
      */
 
-    [SerializeField] Camera playerCamera;
-    [SerializeField] CharacterController playerController;
-    [SerializeField] Transform cameraTransform;
+    [SerializeField] 
+        Camera playerCamera;
+    [SerializeField] 
+        CharacterController playerController;
+    [SerializeField] 
+        Transform cameraTransform;
+    [SerializeField]
+        GameObject pauseMenu;
 
     //Variables needed to control the camera and player
 
     //Camera variables
-    [SerializeField] float mouseSensitivity = 100f;
+    [SerializeField] 
+        float mouseSensitivity = 100f;
 
     private Vector2 rotation;
     Vector2 cameraLook;
 
     //Movement variables
-    [SerializeField] float speed;
+    [SerializeField] 
+        float speed;
 
     private Vector3 playerMovementInput()
     {
@@ -54,6 +61,13 @@ public class PlayerInput : MonoBehaviour
         rotation.y = ClampCameraAngle(rotation.y);
         playerCamera.transform.localEulerAngles = new Vector3(-rotation.y, rotation.x, 0);
     }
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+        pauseMenu.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -67,6 +81,10 @@ public class PlayerInput : MonoBehaviour
     {
         PlayerMove();
         PlayerLook();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            PauseGame();
+        }
     }
 
     
