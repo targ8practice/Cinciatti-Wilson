@@ -8,12 +8,19 @@ public class PlayerMovement : MonoBehaviour
     public Transform cameraTransform;
     public CharacterController controller;
     public float rotationSpeed;
+    public Canvas pauseMenu;
 
     // Update is called once per frame
     void Update()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            pauseMenu.enabled = true;
+
+        }
         Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput);
         float inputMagnitude = Mathf.Clamp01(movementDirection.magnitude);
         float speed = inputMagnitude * maximumSpeed;
