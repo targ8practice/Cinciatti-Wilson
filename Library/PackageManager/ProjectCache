@@ -5,7 +5,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638289874133119637
+      ticks: 638293949625557471
     m_Hash: 900160681
   m_LockFileStatus:
     m_FilePath: C:/Users/targe/Games/Cinciatti-Wilson/Packages/packages-lock.json
@@ -13,7 +13,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638289874133119637
+      ticks: 638293949625557471
     m_Hash: 874552925
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
@@ -1460,6 +1460,7 @@ m_PackageAssets:
         - 1.8.2
         - 1.8.3
         - 1.8.4
+        - 1.8.5
         compatible:
         - 1.4.8
         - 1.5.0-pre.2
@@ -1498,6 +1499,7 @@ m_PackageAssets:
         - 1.8.2
         - 1.8.3
         - 1.8.4
+        - 1.8.5
         verified: 1.4.8
       dependencies:
       - name: com.unity.modules.director

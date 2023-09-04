@@ -31,6 +31,15 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] 
         float speed;
 
+    //Jumping variables
+    [SerializeField]
+    float gravity = -9.81f;
+    [SerializeField]
+    float gravityScale = 1;
+    [SerializeField]
+    float jumpHeight = 4;
+    float playerVelocity;
+
     private Vector3 playerMovementInput()
     {
         Vector3 movementDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
@@ -41,7 +50,18 @@ public class PlayerInput : MonoBehaviour
 
     void PlayerMove()
     {
-        playerController.Move(playerMovementInput() * speed * Time.deltaTime);
+        if (playerController.isGrounded)
+        {
+            playerController.Move(playerMovementInput() * speed * Time.deltaTime);
+           
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            playerVelocity = Mathf.Sqrt(jumpHeight * -2f * (gravity * gravityScale));
+        }
+        playerVelocity += gravity * gravityScale * Time.deltaTime;
+
+        playerController.Move(new Vector3(0, playerVelocity, 0) * Time.deltaTime);
     }
     private float ClampCameraAngle(float angle)
     {
@@ -81,7 +101,7 @@ public class PlayerInput : MonoBehaviour
     {
         PlayerMove();
         PlayerLook();
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             PauseGame();
         }
